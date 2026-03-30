@@ -153,7 +153,7 @@ function WeeklyChart({ daily }) {
       </div>
       <div style={{ display: "flex", gap: 20, marginBottom: 14 }}>
         {[
-          { v: wa, l: "This week", c: "#3b82f6" },
+          { v: wa, l: "This week", c: "#f97316" },
           {
             v: wa > 0 ? `${Math.round((wc / wa) * 100)}%` : "0%",
             l: "Accuracy",
@@ -206,7 +206,7 @@ function WeeklyChart({ daily }) {
           <Bar
             yAxisId="l"
             dataKey="attempts"
-            fill="#3b82f640"
+            fill="#f9731640"
             radius={[4, 4, 0, 0]}
           />
           <Line
@@ -259,7 +259,7 @@ function Notes({ qId, segId, progress, onSave }) {
             style={{
               background: "none",
               border: "none",
-              color: "#3b82f6",
+              color: "#f97316",
               cursor: "pointer",
               fontSize: 11,
               flexShrink: 0,
@@ -435,7 +435,7 @@ function AddModal({ segId, sections, onSave, onClose }) {
               key={t}
               onClick={() => setTab(t)}
               style={{
-                ...btnStyle(tab === t ? "#3b82f6" : "#1e293b"),
+                ...btnStyle(tab === t ? "#f97316" : "#1e293b"),
                 flex: 1,
                 fontSize: 12,
               }}
@@ -1142,20 +1142,20 @@ function SegDetail({
             letterSpacing: "-0.5px",
           }}
         >
-          genius<span style={{ color: "#3b82f6" }}>.</span>
+          genius<span style={{ color: "#f97316" }}>.</span>
         </div>
       </div>
       <div
         style={{
           fontSize: 10,
           color: "#475569",
-          letterSpacing: "0.18em",
+          letterSpacing: "0.16em",
           textTransform: "uppercase",
           fontWeight: 600,
           marginBottom: 16,
         }}
       >
-        MCAT Exam Study
+        TExES Math 7–12 (235)
       </div>
       <button
         onClick={onBack}
@@ -1192,7 +1192,7 @@ function SegDetail({
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          style={btnStyle("#3b82f6", { fontSize: 12, padding: "8px 12px" })}
+          style={btnStyle("#f97316", { fontSize: 12, padding: "8px 12px" })}
         >
           + Add Q
         </button>
@@ -1393,25 +1393,25 @@ function Dashboard({
             letterSpacing: "-1px",
           }}
         >
-          genius<span style={{ color: "#3b82f6" }}>.</span>
+          genius<span style={{ color: "#f97316" }}>.</span>
         </div>
         <div
           style={{
             fontSize: 11,
             color: "#475569",
-            letterSpacing: "0.18em",
+            letterSpacing: "0.16em",
             textTransform: "uppercase",
             fontWeight: 600,
             marginTop: 3,
           }}
         >
-          MCAT Exam Study
+          TExES Math 7–12 (235)
         </div>
       </div>
       <div
         style={{
-          background: "linear-gradient(135deg,#1e3a5f,#0f172a)",
-          border: "1px solid #1e40af",
+          background: "linear-gradient(135deg,#1c1917,#0f172a)",
+          border: "1px solid #c2410c",
           borderRadius: 14,
           padding: 20,
           marginBottom: 20,
@@ -1426,7 +1426,7 @@ function Dashboard({
           }}
         >
           <div>
-            <div style={{ fontSize: 12, color: "#93c5fd", marginBottom: 2 }}>
+            <div style={{ fontSize: 12, color: "#fed7aa", marginBottom: 2 }}>
               Overall Mastery
             </div>
             <div style={{ fontSize: 32, fontWeight: 800, color: "#f1f5f9" }}>
@@ -1442,7 +1442,7 @@ function Dashboard({
             </div>
           </div>
         </div>
-        <MBar pct={op} color="#3b82f6" h={10} />
+        <MBar pct={op} color="#f97316" h={10} />
       </div>
       <WeeklyChart daily={daily} />
       {(sections || []).map((sec) => {
@@ -1586,17 +1586,17 @@ function Dashboard({
           lineHeight: 1.7,
         }}
       >
-        💡 <strong style={{ color: "#94a3b8" }}>Tip:</strong> Questions are
-        sorted by lowest mastery first (spaced repetition). Aim for 80%+ per
-        segment before test day. Use{" "}
-        <strong style={{ color: "#94a3b8" }}>+ Add Q</strong> inside any segment
-        to import your own questions via JSON.
+        💡 <strong style={{ color: "#94a3b8" }}>TExES 235 tip:</strong> Domain
+        II (Patterns and Algebra) is the heaviest at 33% of the exam.
+        Questions are sorted by lowest mastery first. Use{" "}
+        <strong style={{ color: "#94a3b8" }}>+ Add Q</strong> to import questions
+        from your study materials via JSON.
       </div>
     </div>
   );
 }
 
-export default function McatApp({
+export default function Texes235App({
   sections,
   progress,
   daily,

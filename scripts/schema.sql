@@ -1,4 +1,4 @@
--- Alex MCAT app – PostgreSQL schema
+-- TExES 235 study app – PostgreSQL schema
 -- Run via: psql $DATABASE_URL -f scripts/schema.sql (or use run-migrations.js)
 
 CREATE TABLE IF NOT EXISTS sections (

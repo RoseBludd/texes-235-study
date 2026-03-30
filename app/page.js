@@ -10,9 +10,9 @@ import {
   saveDaily,
   saveCustomQuestions,
 } from "../lib/api";
-import McatApp from "./components/McatApp";
+import Texes235App from "./components/Texes235App";
 
-const CLIENT_ID_KEY = "alex_mcat_client_id";
+const CLIENT_ID_KEY = "texes_235_client_id";
 
 let memoryFallback = null;
 
@@ -48,7 +48,7 @@ function getClientId() {
   if (typeof window === "undefined") return "";
   let id = getStorageItem(CLIENT_ID_KEY);
   if (!id || typeof id !== "string") {
-    id = "alex_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
+    id = "texes235_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
     setStorageItem(CLIENT_ID_KEY, id);
   }
   return id;
@@ -174,8 +174,8 @@ export default function Page() {
   );
   }
 
-  return (
-    <McatApp
+    return (
+    <Texes235App
       sections={sections}
       progress={progress}
       daily={daily}

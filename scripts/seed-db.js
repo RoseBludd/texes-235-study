@@ -2,34 +2,54 @@ const path = require("path");
 const { pool } = require("../lib/db");
 
 const SECTIONS = [
-  { id: "chem_phys", label: "Chem & Physics", color: "#f97316", icon: "⚗️", segments: [
-    { id: "gen_chem", label: "General Chemistry", color: "#f97316", icon: "🧪" },
-    { id: "org_chem", label: "Organic Chemistry", color: "#fb923c", icon: "🔗" },
-    { id: "physics", label: "Physics & Math", color: "#fbbf24", icon: "⚡" },
-    { id: "biochem", label: "Biochemistry", color: "#f59e0b", icon: "🧬" },
-  ]},
-  { id: "cars", label: "CARS", color: "#8b5cf6", icon: "📖", segments: [
-    { id: "cars_comp", label: "Passage Comprehension", color: "#8b5cf6", icon: "📖" },
-    { id: "cars_arg", label: "Argument & Reasoning", color: "#a78bfa", icon: "💡" },
-  ]},
-  { id: "bio_biochem", label: "Biology & Biochemistry", color: "#22c55e", icon: "🧫", segments: [
-    { id: "mol_bio", label: "Molecular Bio & Genetics", color: "#22c55e", icon: "🧬" },
-    { id: "cell_bio", label: "Cell Biology", color: "#16a34a", icon: "🦠" },
-    { id: "organ_sys", label: "Organ Systems", color: "#4ade80", icon: "🫀" },
-  ]},
-  { id: "psych_soc", label: "Psych & Sociology", color: "#3b82f6", icon: "🧠", segments: [
-    { id: "behavior", label: "Behavioral Psychology", color: "#3b82f6", icon: "🧠" },
-    { id: "cognition", label: "Cognition & Perception", color: "#60a5fa", icon: "👁️" },
-    { id: "sociology", label: "Sociology & Society", color: "#818cf8", icon: "👥" },
-    { id: "research", label: "Research & Statistics", color: "#6366f1", icon: "📊" },
-  ]},
+  {
+    id: "d2",
+    label: "Patterns & Algebra",
+    color: "#3b82f6",
+    icon: "📐",
+    segments: [
+      { id: "c004", label: "Comp 004 · Sequences & Series", color: "#3b82f6", icon: "🔢" },
+      { id: "c007", label: "Comp 007 · Rational & Radical Fns", color: "#6366f1", icon: "📊" },
+      { id: "c008", label: "Comp 008 · Exponential & Logarithmic", color: "#8b5cf6", icon: "📈" },
+      { id: "c009", label: "Comp 009 · Trigonometric Functions", color: "#a78bfa", icon: "〰️" },
+      { id: "c010", label: "Comp 010 · Differential & Integral Calc", color: "#7c3aed", icon: "∫" },
+    ],
+  },
+  {
+    id: "d3",
+    label: "Geometry & Measurement",
+    color: "#22c55e",
+    icon: "📐",
+    segments: [
+      { id: "c013", label: "Comp 013 · Euclidean Geometry", color: "#22c55e", icon: "⭕" },
+      { id: "c014", label: "Comp 014 · Coordinate & Vector Geo", color: "#16a34a", icon: "🧭" },
+    ],
+  },
+  {
+    id: "d4",
+    label: "Probability & Statistics",
+    color: "#f97316",
+    icon: "📊",
+    segments: [
+      { id: "c015", label: "Comp 015 · Data Analysis Techniques", color: "#f97316", icon: "📉" },
+    ],
+  },
+  {
+    id: "d5",
+    label: "Mathematical Processes",
+    color: "#ec4899",
+    icon: "💬",
+    segments: [
+      { id: "c019", label: "Comp 019 · Communicating Math Concepts", color: "#ec4899", icon: "💬" },
+    ],
+  },
 ];
 
-async function loadSeed() {
-  const dataPath = path.join(__dirname, "seed-questions.json");
+function loadSeed() {
+  const dataPath = path.join(__dirname, "texes-seed.json");
   const fs = require("fs");
   if (!fs.existsSync(dataPath)) {
-    console.error("Run: node scripts/extract-seed-json.js first to create seed-questions.json from demo.js");
+    console.error("Missing scripts/texes-seed.json");
     process.exit(1);
   }
   return require(dataPath);
@@ -40,7 +60,7 @@ async function run() {
     console.error("DATABASE_URL is not set.");
     process.exit(1);
   }
-  const SEED = await loadSeed();
+  const SEED = loadSeed();
   const client = await pool.connect();
   try {
     let so = 0;
@@ -66,7 +86,7 @@ async function run() {
         );
       }
     }
-    console.log("Seed data inserted.");
+    console.log("TExES 235 seed data inserted.");
   } catch (err) {
     console.error("Seed failed:", err.message);
     process.exit(1);

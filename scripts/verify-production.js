@@ -1,14 +1,15 @@
 /**
  * Verifies production deployment: status 200 and branding present.
  * Usage: node scripts/verify-production.js [URL]
- *   Or set PRODUCTION_URL. If neither, uses default alex production URL.
+ *   Or set PRODUCTION_URL (required if no CLI arg).
  */
-const productionUrl =
-  process.env.PRODUCTION_URL ||
-  process.argv[2] ||
-  "https://doctoralex.geniuzs.com";
+const productionUrl = process.env.PRODUCTION_URL || process.argv[2] || "";
 
 async function main() {
+  if (!productionUrl) {
+    console.error("Usage: node scripts/verify-production.js <URL>  or  set PRODUCTION_URL");
+    process.exit(1);
+  }
   console.log("Verifying production:", productionUrl);
   let res;
   try {
@@ -25,8 +26,8 @@ async function main() {
   const status = res.status;
   const html = await res.text();
 
-  const hasTitle = html.includes("Doctor Alex Practice");
-  const hasSubtitle = html.includes("genius MCAT exam practice");
+  const hasTitle = html.includes("TExES 235 Math 7–12 Study");
+  const hasSubtitle = html.includes("TExES Math 7–12 (235)");
   const noStudyIdUi = !html.includes("Your study ID") && !html.includes("Link this browser");
 
   console.log("Status:", status, ok ? "OK" : "FAIL");

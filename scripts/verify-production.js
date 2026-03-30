@@ -31,8 +31,8 @@ async function main() {
   const noStudyIdUi = !html.includes("Your study ID") && !html.includes("Link this browser");
 
   console.log("Status:", status, ok ? "OK" : "FAIL");
-  console.log("Title 'Doctor Alex Practice':", hasTitle ? "YES" : "NO");
-  console.log("Subtitle 'genius MCAT exam practice':", hasSubtitle ? "YES" : "NO");
+  console.log("Title 'TExES 235 Math 7–12 Study':", hasTitle ? "YES" : "NO");
+  console.log("Subtitle 'TExES Math 7–12 (235)':", hasSubtitle ? "YES" : "NO");
   console.log("Single-user default (no paste/link UI):", noStudyIdUi ? "YES" : "NO");
 
   if (ok && hasTitle && hasSubtitle && noStudyIdUi) {

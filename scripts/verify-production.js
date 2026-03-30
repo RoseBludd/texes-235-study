@@ -26,13 +26,15 @@ async function main() {
   const status = res.status;
   const html = await res.text();
 
-  const hasTitle = html.includes("TExES 235 Math 7–12 Study");
-  const hasSubtitle = html.includes("TExES Math 7–12 (235)");
+  const hasTitle = html.includes("TExES Math 7-12 (235) Study");
+  const hasSubtitle =
+    html.includes("Texas teacher certification math practice") ||
+    html.includes("TExES Math 7-12 (235)");
   const noStudyIdUi = !html.includes("Your study ID") && !html.includes("Link this browser");
 
   console.log("Status:", status, ok ? "OK" : "FAIL");
-  console.log("Title 'TExES 235 Math 7–12 Study':", hasTitle ? "YES" : "NO");
-  console.log("Subtitle 'TExES Math 7–12 (235)':", hasSubtitle ? "YES" : "NO");
+  console.log("Title 'TExES Math 7-12 (235) Study':", hasTitle ? "YES" : "NO");
+  console.log("Share description / branding:", hasSubtitle ? "YES" : "NO");
   console.log("Single-user default (no paste/link UI):", noStudyIdUi ? "YES" : "NO");
 
   if (ok && hasTitle && hasSubtitle && noStudyIdUi) {

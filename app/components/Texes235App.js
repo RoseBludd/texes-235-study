@@ -16,7 +16,7 @@ function calcMastery(s) {
   if (!s || s.attempts === 0) return 0;
   return Math.min(
     Math.round(
-      (s.correct / s.attempts) * 0.75 + Math.min(s.streak * 0.05, 0.25) * 100
+      ((s.correct / s.attempts) * 0.75 + Math.min(s.streak * 0.05, 0.25)) * 100
     ),
     100
   );
